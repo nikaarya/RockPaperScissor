@@ -10,6 +10,8 @@ public class RockPaperScissor {
     static String compWon = "Computer won";
     static String playWon = "Player won";
     static String compChoice = "Computers choice: ";
+    static int playersScore;
+    static int computersScore;
 
     public static void main(String[] args) {
         playOrNot();
@@ -43,6 +45,7 @@ public class RockPaperScissor {
             else if (rockPaperScissor.equalsIgnoreCase(computersChoice)) {
                 System.out.println(compChoice + computersChoice);
                 System.out.println("Draw");
+                printScore();
             }
             else if (rockPaperScissor.equalsIgnoreCase("rock") && computersChoice.equals("Paper")) {
                 ifComputerWins(computersChoice);
@@ -68,12 +71,42 @@ public class RockPaperScissor {
             }
         }
     }
+
+//    private static void presentWinner() {
+//        if (playersScore == 3) {
+//            System.out.println("Player won!");
+//            exit = true;
+//        } else if (computersScore == 3) {
+//            System.out.println("Computer won!");
+//            exit = true;
+//        }
+//    }
+
     private static void ifComputerWins(String computersChoice) {
         System.out.println(compChoice + computersChoice);
         System.out.println(compWon);
+        computersScore++;
+        printScore();
+
+        if (playersScore == 3) {
+            System.out.println("Player won the game!");
+            exit = true;
+        }
     }
+
+    private static void printScore() {
+        System.out.println("Computers total = " + computersScore + "\nPlayers total = " + playersScore);
+    }
+
     private static void ifPlayerWins(String computersChoice) {
         System.out.println(compChoice + computersChoice);
         System.out.println(playWon);
+        playersScore++;
+        printScore();
+
+        if (computersScore == 3) {
+            System.out.println("Computer won the game!");
+            exit = true;
+        }
     }
 }
