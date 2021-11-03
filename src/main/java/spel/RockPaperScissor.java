@@ -72,26 +72,23 @@ public class RockPaperScissor {
         }
     }
 
-//    private static void presentWinner() {
-//        if (playersScore == 3) {
-//            System.out.println("Player won!");
-//            exit = true;
-//        } else if (computersScore == 3) {
-//            System.out.println("Computer won!");
-//            exit = true;
-//        }
-//    }
+    private static void presentWinner() {
+        if (playersScore == 3) {
+            System.out.println("*** Player won this round! ***");
+            exit = true;
+        } else if (computersScore == 3) {
+            System.out.println("*** Computer won this round! ***");
+            exit = true;
+        }
+    }
 
     private static void ifComputerWins(String computersChoice) {
         System.out.println(compChoice + computersChoice);
         System.out.println(compWon);
         computersScore++;
         printScore();
+        presentWinner();
 
-        if (playersScore == 3) {
-            System.out.println("Player won the game!");
-            exit = true;
-        }
     }
 
     private static void printScore() {
@@ -103,10 +100,6 @@ public class RockPaperScissor {
         System.out.println(playWon);
         playersScore++;
         printScore();
-
-        if (computersScore == 3) {
-            System.out.println("Computer won the game!");
-            exit = true;
-        }
+        presentWinner();
     }
 }
